@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>BOOKING Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="form.css">
+    </head>
+    <body>
+        
+        <section class = "banner">
+            <h2> <span class="auto-input"></span></h2>
+            <div class = "card-container">
+
+
+                <div class = "card-content">
+                    <h3> BOOK YOUR PACKAGE</h3>
+                    <form method="post" action="https://script.google.com/macros/s/AKfycbyWw8oFADiE73d1HCpb4nAXZDGrH5jfIRYTzs9BlnhpTbgMEmadQlaExw9DBV5hbvKz/exec" name="bookingform" id="bookingform">
+                     <div class = "form-row">
+                            <select name = "day">
+                                <option value = "day-select">Select Day</option>
+                                <option value = "sunday">Sunday</option>
+                                <option value = "monday">Monday</option>
+                                <option value = "tuesday">Tuesday</option>
+                                <option value = "wednesday">Wednesday</option>
+                                <option value = "thursday">Thursday</option>
+                                <option value = "friday">Friday</option>
+                                <option value = "saturday">Saturday</option>
+                            </select>
+
+                            <select name = "hours">
+                                <option value = "hour-select">Select Hour</option>
+                                <option value = "10">10: 00</option>
+                                <option value = "10">12: 00</option>
+                                <option value = "10">14: 00</option>
+                                <option value = "10">16: 00</option>
+                                <option value = "10">18: 00</option>
+                                <option value = "10">20: 00</option>
+                                <option value = "10">22: 00</option>
+                            </select>
+                        </div>
+
+                        <div class = "form-row">
+                            <input type="text" placeholder="name" name="name">
+                            <input type="number" placeholder="number" name="number">
+                        </div>
+                        <div class = "form-row">
+                            <select name = "packages">
+                                <option value = "PACKAGE"> packages</option>
+                                <option value = "BRONZE"> BRONZE</option>
+                                <option value = "SLIVER">SLIVER</option>
+                                <option value = "GOLD">GOLD</option>
+                                <option value = "DIAMOND">DIAMOND</option>
+                                <option value = "PRIME">PRIME</option>
+
+                            </select>
+                            <input type = "text" placeholder="address" name="addres">
+                            </div>   
+                        <div class="form-row">
+                            <input type="submit" placeholder="submit" onclick="refresh()" >
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="backbtn"><button id="backbtn" onclick="window.history.back()">GO BACK</button>
+            </div>
+           
+
+
+
+
+
+
+    <!--booking form text -->
+    
+        <script>
+			const scriptURL ='https://script.google.com/macros/s/AKfycbyWw8oFADiE73d1HCpb4nAXZDGrH5jfIRYTzs9BlnhpTbgMEmadQlaExw9DBV5hbvKz/exec'
+			const form = document.forms['bookingform']
+
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => $("#form_alerts").html("<div class='alert alert-success'>booking message sent successfully.</div>"))
+            .catch(error => $("#form_alerts").html("<div class='alert alert-danger'>booking  message not sent.</div>"))
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var typed = new Typed(".auto-input",{
+                strings: ["","BOOK IT NOW"," MAKE IT EASY",],
+                typeSpeed:100,
+                backSpeed:100,
+                loop:true,
+            })
+
+            function refresh(){
+                alert("booked succesfully");
+                window.location.reload();
+            }
+    </script>
+    <!--booking form text -->
+    </body>
+</html>
